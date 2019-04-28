@@ -41,7 +41,7 @@ function actual_test()
 
     for (( i=0; i<$repetitions; i++ ))
     do
-    /usr/bin/time -f $format $command 2>> $file
+        /usr/bin/time -f $format $command 2>> $file
         wait
     done
 }
