@@ -50,12 +50,12 @@ function python_tests()
 {
     number_of_ints=10
     number_of_files=100
-    directory_with_files=/home/krzysztof/Thesis/Ints/
+    directory_with_files=~/Thesis/Ints/
     sorting_on=true
 
     command="python python/main.py $number_of_ints $number_of_files $directory_with_files $sorting_on"
     file="results/pythonResult.txt"
-    repetitions=100
+    repetitions=1
 
     actual_test "$command" $file $repetitions
 }
