@@ -62,17 +62,25 @@ function perform_test()
 
 function python_tests()
 {
-    number_of_ints=10
+    # number_of_ints=10 # obsolete; now the script is looking for all the directories with data
     number_of_files=100
     directory_with_files=~/Thesis/Ints/
     sorting_on=true
+
 
     command="python python/main.py $number_of_ints $number_of_files $directory_with_files $sorting_on"
     resultFile="results/pythonResult.txt"
     repetitions=10
 
-    write_labels $resultFile
-    perform_test "$command" $resultFile $repetitions $number_of_ints $number_of_files $sorting_on
+    for pack in `find $directory_with_files -type d` ;
+    do
+        number_of_ints=$(basename "${pack}")
+        echo $number_of_ints
+    done
+
+
+    # write_labels $resultFile
+    # perform_test "$command" $resultFile $repetitions $number_of_ints $number_of_files $sorting_on
 }
 
 python_tests
