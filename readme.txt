@@ -1,5 +1,10 @@
+Programs works like this:
+one run sorts (for example) 100 files with 10 int number in each
+so in every run program sorts number in all of the files
+
+
 input format:
-... number_of_ints   number_of_files   directory_with_files   sorting_on
+<program call> number_of_ints   number_of_files   directory_with_files   sorting_on
 
 examples: 
 

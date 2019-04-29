@@ -7,7 +7,10 @@ separator=";"
 function write_labels()
 {
     resultFile=$1
-    echo -n "real time (s)$separator" > $resultFile
+    echo -n "numbers should be sorted$separator" >> $resultFile
+    echo -n "number of int numbers$separator" > $resultFile
+    echo -n "number of files$separator" >> $resultFile
+    echo -n "real time (s)$separator" >> $resultFile
     echo -n "user time (s)$separator" >> $resultFile
     echo -n "system time (s)$separator" >> $resultFile
     echo -n "CPU usage (%)$separator" >> $resultFile
@@ -19,9 +22,15 @@ function write_labels()
 
 function perform_test()
 {
-    command=$1 # command thar should be executed during the test
-    resultFile=$2 # the file to save results
-    repetitions=$3 # how many times the test should run and append the result to result file
+    # general arguments - the same for all tested programs
+    command=$1          # command thar should be executed during the test
+    resultFile=$2       # the file to save results
+    repetitions=$3      # how many times the test should run and append the result to result file
+
+    # arguments typical for sorting machines
+    numberOfInts=$4     # how many numbers to sort
+    numberOfFiles=$5    # how many files were loaded (and sorted or not sorted)
+    sortingOn=$6        # shows if sorting was performed or not
 
     echo $command
     echo $resultFile
@@ -42,6 +51,10 @@ function perform_test()
 
     for (( i=0; i<$repetitions; i++ ))
     do
+        echo -n "$sortingOn$separator" >> $resultFile
+        echo -n "$numberOfInts$separator" >> $resultFile
+        echo -n "$numberOfFiles$separator" >> $resultFile
+        wait
         /usr/bin/time -f $format $command 2>> $resultFile
         wait
     done
@@ -59,7 +72,7 @@ function python_tests()
     repetitions=10
 
     write_labels $resultFile
-    perform_test "$command" $resultFile $repetitions
+    perform_test "$command" $resultFile $repetitions $number_of_ints $number_of_files $sorting_on
 }
 
 python_tests
