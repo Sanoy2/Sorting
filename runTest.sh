@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# separator between labels and values, might be helpful to import data into csv/excel
+separator=";"
+
 # example: actual_test 'python main.py' 'python1.txt' 3
 function actual_test()
 {
@@ -12,29 +15,29 @@ function actual_test()
     echo $repetitions
 
     # file format:
-    format="%e\n"           # real elapsed time (in seconds)
-    echo "real time (s)" > $file
+    format="%e$separator"           # real elapsed time (in seconds)
+    echo -n "real time (s)$separator" > $file
 
-    format=$format"%U\n"    # user time         (in seconds)
-    echo "user time (s)" >> $file
+    format=$format"%U$separator"    # user time         (in seconds)
+    echo -n "user time (s)$separator" >> $file
 
-    format=$format"%S\n"    # system time       (in seconds)
-    echo "system time (s)" >> $file
+    format=$format"%S$separator"    # system time       (in seconds)
+    echo -n "system time (s)$separator" >> $file
 
-    format=$format"%P\n"    # CPU usage         ((%U + %S) / %E)
-    echo "CPU usage (%)" >> $file
+    format=$format"%P$separator"    # CPU usage         ((%U + %S) / %E)
+    echo -n "CPU usage (%)$separator" >> $file
 
-    format=$format"%M\n"    # Maximum resident set size of the process during its lifetime, in Kbytes.
-    echo "maximum resident set size of the process during lifetime (Kbytes)" >> $file
+    format=$format"%M$separator"    # Maximum resident set size of the process during its lifetime, in Kbytes.
+    echo -n "maximum resident set size of the process during lifetime (Kbytes)$separator" >> $file
 
-    format=$format"%c\n"    # Number of times the process was context-switched involuntarily (because the time slice expired)
-    echo "number of involuntarily context-switches" >> $file
+    format=$format"%c$separator"    # Number of times the process was context-switched involuntarily (because the time slice expired)
+    echo -n "number of involuntarily context-switches$separator" >> $file
 
-    format=$format"%w\n"    # Number of waits: times that the program was context-switched voluntarily, for instance while waiting for an I/O operation to complete  
-    echo "number of voluntarily context-switches" >> $file
+    format=$format"%w$separator"    # Number of waits: times that the program was context-switched voluntarily, for instance while waiting for an I/O operation to complete  
+    echo -n "number of voluntarily context-switches$separator" >> $file
 
-    format=$format"%x\n"    # exit status (other than 0 is an error)
-    echo "status code" >> $file
+    format=$format"%x$separator"    # exit status (other than 0 is an error)
+    echo -n "status code$separator" >> $file
 
     echo '' >> $file
     wait
