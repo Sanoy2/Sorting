@@ -12,10 +12,10 @@ namespace dotnet
             string directoryWithFiles = $"{args[2]}{numberOfInts}/";
             bool sortOn = Boolean.Parse(args[3]);
 
-            System.Console.WriteLine($"Number of ints: {numberOfInts}");
-            System.Console.WriteLine($"Number of files: {numberOfFiles}");
-            System.Console.WriteLine($"Sorting on?: {sortOn}");
-            System.Console.WriteLine($"Directory: {directoryWithFiles}");
+            // System.Console.WriteLine($"Number of ints: {numberOfInts}");
+            // System.Console.WriteLine($"Number of files: {numberOfFiles}");
+            // System.Console.WriteLine($"Sorting on?: {sortOn}");
+            // System.Console.WriteLine($"Directory: {directoryWithFiles}");
 
             var loader = new Loader();
 

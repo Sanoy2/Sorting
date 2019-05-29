@@ -23,7 +23,6 @@ std::vector<int> Loader::Load(std::string path)
         vector.push_back(number);
     }
     file.close();
-    // std::cout << "Vector length: " << vector.size() << std::endl;
 
     return vector;
 }

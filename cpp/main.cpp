@@ -25,10 +25,10 @@ int main(int argc, char** argv)
         return 1;
     }
         
-    std::cout << "Number of ints: " << numberOfInts << std::endl;
-    std::cout << "Number of files: " << numberOfFiles << std::endl;
-    std::cout << "Main path: " << directoryWithFiles << std::endl;
-    std::cout << "Sorting on?: " << sortOn << std::endl;
+    // std::cout << "Number of ints: " << numberOfInts << std::endl;
+    // std::cout << "Number of files: " << numberOfFiles << std::endl;
+    // std::cout << "Main path: " << directoryWithFiles << std::endl;
+    // std::cout << "Sorting on?: " << sortOn << std::endl;
     
     Loader loader;
     std::string path;
@@ -41,6 +41,7 @@ int main(int argc, char** argv)
         pathStream << directoryWithFiles << numberOfInts << "/"<< i << ".txt";
         path = pathStream.str();
         vector = loader.Load(path);
+        
         if(sortOn)
         {
             std::sort(vector.begin(), vector.end()); 
